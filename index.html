@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <style>
+        body{
+            background-color: black;
+            color: #00ff01;
+            font-size: 30px;
+            padding: 30px;
+        }
+        div{
+            padding-bottom: 10px;
+        }
+        .btn{
+            background-color: #00ff01;
+            color: black;
+            font-size: 25px;
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: flex;
+            cursor: pointer;
+        }
+        .btn:active{
+            background-color: #00ff01;
+            box-shadow: 3px 2px 2px rgba(255, 255, 255, 0.449);
+            border: 1px solid #00ff01;
+        }
+        /* .btn:hover{
+            background-color: aliceblue;
+        } */
+        .but{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+<body>
+    <div class="but">
+        <button class="btn">
+            Touch me
+        </button>
+    </div>
+    <script>
+      async function min(){
+        const addItems = async (item) => {
+            await randomdelay()
+            let div = document.createElement("div")
+            div.innerHTML = item;
+            document.body.append(div)
+        }
+
+        const randomdelay = () => {
+            return new Promise((resolve,reject)=> {
+                timeout = Math.floor(2 + Math.random() * 7 );
+                setTimeout(()=> {
+                    resolve();
+
+                }, timeout*1000)
+            })
+        } 
+        
+       async function main(){
+
+        let t= setInterval(()=> {
+            let last = document.body.lastElementChild;
+            if(last.innerHTML.endsWith("...")){
+                last.innerHTML = last.innerHTML.slice(0,last.innerHTML.length -3)
+            }
+            else
+            {
+                last.innerHTML = last.innerHTML + "."
+            }
+        },150)
+        let text = ["Initialized Hacking now reading your data","Downloading Malwares","Reading your files","Password files detected",
+        "Sending all passwords and all files to servers","Cleaning up"]
+
+        for (const items of text) {
+            await addItems(items)
+        }
+
+        await randomdelay()
+        clearInterval(t)
+
+       }
+
+       main()
+      }
+      min()
+    </script>
+</body>
+</html>
